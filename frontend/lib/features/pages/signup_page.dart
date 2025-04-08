@@ -23,6 +23,12 @@ class _SignupPageState extends State<SignupPage> {
     super.dispose();
   }
 
+  void signUpUser() {
+    if (formKey.currentState!.validate()) {
+      //Store the User data
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,7 +74,7 @@ class _SignupPageState extends State<SignupPage> {
                 validator: (value) {
                   if (value == null ||
                       value.trim().isEmpty ||
-                      value.trim().length < 7) {
+                      value.trim().length <= 7) {
                     return "Password field is invalid!";
                   }
                   return null;
@@ -76,7 +82,7 @@ class _SignupPageState extends State<SignupPage> {
               ),
               const SizedBox(height: 20),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: signUpUser,
                 child: const Text(
                   "SIGN UP",
                   style: TextStyle(color: Colors.white, fontSize: 16),

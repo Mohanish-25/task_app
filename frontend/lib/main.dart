@@ -14,13 +14,21 @@ class MyApp extends StatelessWidget {
       title: 'Task App',
       theme: ThemeData(
         inputDecorationTheme: InputDecorationTheme(
-          contentPadding: const EdgeInsets.all(27.0),
+          contentPadding: const EdgeInsets.all(25.0),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.grey.shade300, width: 3),
             borderRadius: BorderRadius.circular(10),
           ),
           focusedBorder: OutlineInputBorder(
             borderSide: const BorderSide(width: 3),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          border: OutlineInputBorder(
+            borderSide: const BorderSide(width: 3),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          errorBorder: OutlineInputBorder(
+            borderSide: const BorderSide(width: 3, color: Colors.red),
             borderRadius: BorderRadius.circular(10),
           ),
         ),
