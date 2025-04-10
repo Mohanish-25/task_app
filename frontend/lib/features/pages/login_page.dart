@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/features/pages/login_page.dart';
+import 'package:frontend/features/pages/signup_page.dart';
 
-class SignupPage extends StatefulWidget {
-  static route() => MaterialPageRoute(builder: (context) => const SignupPage());
-  const SignupPage({super.key});
+class LoginPage extends StatefulWidget {
+  static route() => MaterialPageRoute(builder: (context) => const LoginPage());
+  const LoginPage({super.key});
 
   @override
-  State<SignupPage> createState() => _SignupPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _SignupPageState extends State<SignupPage> {
+class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  final nameController = TextEditingController();
   final formKey = GlobalKey<FormState>();
   final emailRegex = RegExp(
     r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
@@ -21,11 +20,10 @@ class _SignupPageState extends State<SignupPage> {
   void dispose() {
     emailController.dispose();
     passwordController.dispose();
-    nameController.dispose();
     super.dispose();
   }
 
-  void signUpUser() {
+  void loginUser() {
     if (formKey.currentState!.validate()) {
       //Store the User data
     }
@@ -42,21 +40,11 @@ class _SignupPageState extends State<SignupPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text(
-                "Sign Up.",
+                "Login.",
                 style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 30),
-              TextFormField(
-                controller: nameController,
-                decoration: const InputDecoration(hintText: "Name"),
-                validator: (value) {
-                  if (value == null || value.trim().isEmpty) {
-                    return "Name field is required";
-                  }
-                  return null;
-                },
-              ),
-              const SizedBox(height: 15),
+
               TextFormField(
                 controller: emailController,
                 decoration: const InputDecoration(hintText: "Email"),
@@ -82,26 +70,28 @@ class _SignupPageState extends State<SignupPage> {
                   return null;
                 },
               ),
+              const SizedBox(height: 15),
+
               const SizedBox(height: 20),
               ElevatedButton(
-                onPressed: signUpUser,
+                onPressed: loginUser,
                 child: const Text(
-                  "SIGN UP",
+                  "LOGIN",
                   style: TextStyle(color: Colors.white, fontSize: 16),
                 ),
               ),
               const SizedBox(height: 20),
               GestureDetector(
                 onTap: () {
-                  Navigator.of(context).push(LoginPage.route());
+                  Navigator.of(context).push(SignupPage.route());
                 },
                 child: RichText(
                   text: TextSpan(
-                    text: 'Already have an account? ',
+                    text: 'Don\'t have an account? ',
                     style: Theme.of(context).textTheme.titleMedium,
                     children: const [
                       TextSpan(
-                        text: 'Login',
+                        text: 'Sign Up',
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ],
