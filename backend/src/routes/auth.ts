@@ -6,6 +6,7 @@ import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { UUID } from "crypto";
 import { auth, AuthRequest } from "../middleware/auth";
+import { error } from "console";
 
 const authRouter = Router();
 
@@ -34,7 +35,7 @@ authRouter.post(
       if (existingUser.length) {
         res
           .status(400)
-          .json({ msg: "User with the same email already exists!" });
+          .json({ error: "User with the same email already exists!" });
         return;
       }
       //hashed password
